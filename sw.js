@@ -1,5 +1,14 @@
-const CACHE_NAME = 'english-recap-v1';
-const ASSETS = ['./', './index.html', './vocab.html', './review.html', './styles.css', './app.js', './manifest.json', './data/articles.json'];
+const CACHE_NAME = 'english-recap-v2';
+const ASSETS = [
+  '/english-recap-app/',
+  '/english-recap-app/index.html',
+  '/english-recap-app/vocab.html',
+  '/english-recap-app/review.html',
+  '/english-recap-app/styles.css',
+  '/english-recap-app/app.js',
+  '/english-recap-app/manifest.json',
+  '/english-recap-app/data/articles.json'
+];
 self.addEventListener('install', function(e) {
   e.waitUntil(caches.open(CACHE_NAME).then(function(cache) { return cache.addAll(ASSETS); }));
   self.skipWaiting();
