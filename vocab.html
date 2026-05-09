@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#3b82f6">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Vocab - English Recap</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <div class="header-top">
+      <div>
+        <div class="header-title">&#128218; Vocab</div>
+        <div class="header-date" id="headerDate"></div>
+      </div>
+      <a href="index.html" class="avatar" title="Back">&#127968;</a>
+    </div>
+    <div class="stats-bar">
+      <div class="stat-item"><span class="stat-num" id="statDays2">0</span><span class="stat-label">Streak</span></div>
+      <div class="stat-item"><span class="stat-num" id="statVocab2">0</span><span class="stat-label">Vocab</span></div>
+      <div class="stat-item"><span class="stat-num" id="statDue2">0</span><span class="stat-label">Due</span></div>
+    </div>
+  </div>
+</header>
+<nav class="nav-tabs">
+  <a href="index.html" class="nav-tab">&#128214; Article</a>
+  <a href="#" class="nav-tab active">&#128218; Vocab</a>
+  <a href="review.html" class="nav-tab">&#127919; Review</a>
+</nav>
+<div class="container">
+  <div id="vocabList"></div>
+  <div id="vocabPagination" class="data-section" style="display:none;margin-top:16px">
+    <button class="btn btn-ghost btn-sm" id="vocabPrevBtn">Prev</button>
+    <span style="flex:1;text-align:center;line-height:36px;font-size:13px;color:var(--text-muted)" id="vocabPageInfo"></span>
+    <button class="btn btn-ghost btn-sm" id="vocabNextBtn">Next</button>
+  </div>
+  <div class="data-section" style="margin-top:24px">
+    <button class="btn btn-ghost" id="exportBtn">&#128228; Export</button>
+    <button class="btn btn-ghost" id="importBtn">&#128229; Import</button>
+    <input type="file" id="importFileInput" accept=".json" style="display:none">
+  </div>
+</div>
+<div class="modal-overlay" id="wordModal">
+  <div class="modal">
+    <div class="modal-word" id="modalWord"></div>
+    <div class="modal-ipa" id="modalIpa"></div>
+    <div class="modal-zh" id="modalZh"></div>
+    <div class="modal-example" id="modalExample"></div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+</div>
+<script src="app.js"></script>
+<script>
+(function(){
+  document.getElementById("headerDate").textContent = new Date().toISOString().split("T")[0];
+  if(typeof loadVocab==="function") loadVocab();
+  if(typeof renderVocabPage==="function") renderVocabPage();
+  if(typeof updateStatsAll==="function") updateStatsAll();
+  document.getElementById("exportBtn").onclick = function() {
+    var all = JSON.stringify({ vocabWords: vocabWords, exportDate: new Date().toISOString().split("T")[0] }, null, 2);
+    var blob = new Blob([all], { type: "application/json" });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url; a.download = "vocab-" + new Date().toISOString().split("T")[0] + ".json";
+    a.click(); URL.revokeObjectURL(url);
+  };
+  document.getElementById("importBtn").onclick = function() { document.getElementById("importFileInput").click(); };
+  document.getElementById("importFileInput").onchange = function(e) {
+    var file = e.target.files[0]; if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function(ev) {
+      try {
+        var data = JSON.parse(ev.target.result);
+        if (data.vocabWords && Array.isArray(data.vocabWords)) {
+          var existing = {};
+          vocabWords.forEach(function(v){ existing[v.word.toLowerCase()] = true; });
+          var added = 0;
+          data.vocabWords.forEach(function(w) { if (!existing[w.word.toLowerCase()]) { vocabWords.push(w); added++; } });
+          saveVocab(); updateStatsAll();
+          alert("Imported " + added + " words."); renderVocabPage();
+        }
+      } catch(err) { alert("Import failed."); }
+    };
+    reader.readAsText(file); e.target.value = "";
+  };
+  document.getElementById("wordModal").addEventListener("click", function(e) {
+    if (e.target.classList.contains("modal-overlay")) closeModal();
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#3b82f6">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>English Recap</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <div class="header-top">
+      <div>
+        <div class="header-title">English Recap</div>
+        <div class="header-date" id="headerDate">2026-05-09</div>
+      </div>
+      <a href="vocab.html" class="avatar" title="Vocab">&#128218;</a>
+    </div>
+    <div class="stats-bar">
+      <div class="stat-item"><span class="stat-num" id="statDays">0</span><span class="stat-label">Streak</span></div>
+      <div class="stat-item"><span class="stat-num" id="statVocab">0</span><span class="stat-label">Vocab</span></div>
+      <div class="stat-item"><span class="stat-num" id="statDue">0</span><span class="stat-label">Due</span></div>
+    </div>
+  </div>
+</header>
+<nav class="nav-tabs">
+  <a href="#" class="nav-tab active" onclick="switchView('article');return false;">&#128214; Article</a>
+  <a href="#" class="nav-tab" onclick="switchView('vocab');return false;">&#128218; Vocab</a>
+  <a href="#" class="nav-tab" onclick="switchView('review');return false;">&#127919; Review</a>
+</nav>
+<div id="view-article" class="page-view active">
+  <div class="container" id="articleContent">
+    <div class="card" style="text-align:center;padding:40px;color:var(--text-muted)"><p>Loading...</p></div>
+  </div>
+</div>
+<div id="view-vocab" class="page-view">
+  <div class="container">
+    <div id="vocabList"></div>
+    <div id="vocabPagination" class="data-section" style="display:none;margin-top:16px">
+      <button class="btn btn-ghost btn-sm" id="vocabPrevBtn">Prev</button>
+      <span style="flex:1;text-align:center;line-height:36px;font-size:13px;color:var(--text-muted)" id="vocabPageInfo"></span>
+      <button class="btn btn-ghost btn-sm" id="vocabNextBtn">Next</button>
+    </div>
+    <div class="data-section" style="margin-top:24px">
+      <button class="btn btn-ghost" id="exportBtn">&#128228; Export</button>
+      <button class="btn btn-ghost" id="importBtn">&#128229; Import</button>
+      <input type="file" id="importFileInput" accept=".json" style="display:none">
+    </div>
+  </div>
+</div>
+<div id="view-review" class="page-view">
+  <div class="container">
+    <div id="reviewCounter" class="review-counter"></div>
+    <div id="reviewContent"></div>
+    <div id="reviewRating" class="review-rating" style="display:none">
+      <button class="rating-btn red" id="ratingBtn0">&#128165; No</button>
+      <button class="rating-btn orange" id="ratingBtn1">&#129318; Vague</button>
+      <button class="rating-btn green" id="ratingBtn2">&#128302; Yes</button>
+    </div>
+  </div>
+</div>
+<div class="modal-overlay" id="wordModal">
+  <div class="modal">
+    <div class="modal-word" id="modalWord"></div>
+    <div class="modal-ipa" id="modalIpa"></div>
+    <div class="modal-zh" id="modalZh"></div>
+    <div class="modal-example" id="modalExample"></div>
+    <div class="modal-actions">
+      <button class="btn btn-primary" id="modalSaveBtn" style="flex:2">+ Save to Vocab</button>
+      <button class="btn btn-ghost" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

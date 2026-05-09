@@ -1,0 +1,61 @@
+{
+  "articles": [
+    {
+      "id": "2026-05-08",
+      "date": "2026-05-08",
+      "dayLabel": "Friday, May 8",
+      "passage": "Today was one of those days where I barely had a moment to catch my breath. My morning kicked off with our weekly review session with Changhong Jihua — it's a recurring meeting where we go over the progress on our public cloud and AI collaboration. We spent two solid hours aligning on pipeline updates and figuring out how to push a few deals forward. I had to walk them through some new product capabilities, which honestly felt like I was juggling three conversations at once.\n\nAfter a quick lunch, I hopped into another meeting about our shrimp-selling initiative. I know it sounds bizarre, but Tencent Cloud is actually running a campaign to help partners tap into the crayfish supply chain. We brainstormed ways to onboard more sellers and streamline the logistics. Then I wrapped up the day with a training session on the same topic, this time focused on the nitty-gritty of how to pack and farm crayfish digitally. It's definitely not what I imagined I'd be doing when I joined the ecosystem team, but hey, that's what keeps the job interesting.",
+      "expressions": [
+        {
+          "word": "catch my breath",
+          "ipa": "/kætʃ maɪ breθ/",
+          "zh": "喘口气，歇一歇",
+          "example": "After three back-to-back calls, I finally caught my breath around 3 PM."
+        },
+        {
+          "word": "kick off",
+          "ipa": "/kɪk ɒf/",
+          "zh": "开始，启动",
+          "example": "We'll kick off the new quarter with a strategy workshop next Monday."
+        },
+        {
+          "word": "align on",
+          "ipa": "/əlaɪn ɒn/",
+          "zh": "对齐（意见/方向）",
+          "example": "Let's align on the timeline before looping in the client."
+        },
+        {
+          "word": "walk someone through",
+          "ipa": "/wɔːk ˈsʌmwʌn θruː/",
+          "zh": "带某人过一遍，详细解释",
+          "example": "Can you walk me through the pricing model one more time?"
+        },
+        {
+          "word": "hop into",
+          "ipa": "/hɒp ˈɪntuː/",
+          "zh": "快速加入（会议/活动）",
+          "example": "I need to hop into a quick sync with the product team."
+        },
+        {
+          "word": "wait for it",
+          "ipa": "/weɪt fɔːr ɪt/",
+          "zh": "等一下（制造悬念）",
+          "example": "Our biggest client this quarter is — wait for it — a crayfish farm."
+        },
+        {
+          "word": "nitty-gritty",
+          "ipa": "/ˌnɪti ˈɡrɪti/",
+          "zh": "细节，具体操作",
+          "example": "Let's skip the overview and get into the nitty-gritty."
+        },
+        {
+          "word": "tap into",
+          "ipa": "/tæp ˈɪntuː/",
+          "zh": "开发利用（市场/资源）",
+          "example": "We're looking to tap into the Southeast Asian market next year."
+        }
+      ],
+      "speakingTip": "今天重点练习语调起伏。注意 \"wait for it\" 和 \"I know it sounds bizarre\" 这类插入语，说的时候要自然地降低音量、放慢语速，制造 conversational 的节奏感。不要像读课文一样平铺直叙。"
+    }
+  ]
+}

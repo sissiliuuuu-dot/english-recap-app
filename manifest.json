@@ -1,0 +1,10 @@
+{
+  "name": "English Recap",
+  "short_name": "English Recap",
+  "description": "Daily English Speaking Practice",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#3b82f6",
+  "orientation": "portrait"
+}
