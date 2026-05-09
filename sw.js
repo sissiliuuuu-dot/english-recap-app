@@ -1,5 +1,5 @@
 const CACHE_NAME = 'english-recap-v1';
-const ASSETS = ['/', '/index.html', '/vocab.html', '/review.html', '/styles.css', '/app.js', '/manifest.json', '/data/articles.json'];
+const ASSETS = ['./', './index.html', './vocab.html', './review.html', './styles.css', './app.js', './manifest.json', './data/articles.json'];
 self.addEventListener('install', function(e) {
   e.waitUntil(caches.open(CACHE_NAME).then(function(cache) { return cache.addAll(ASSETS); }));
   self.skipWaiting();
